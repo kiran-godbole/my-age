@@ -1,8 +1,12 @@
-import AgeInput from "./Components/FormComponent/AgeInput";
+import AddUser from "./Components/UI/Users/AddUsers";
 
 function App() {
   return (
-    <AgeInput/>
+    <div>
+      <AddUser/>
+
+    </div>
+    
   );
 }
 
