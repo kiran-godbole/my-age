@@ -8,7 +8,7 @@ import ErrorModal from '../Components/UI/ErrorModal.module';
 const AddUser = props => {
     const nameInputRef = useRef();
     const ageInputRef = useRef();
-    // const collageInputRef = useRef();
+    const collageInputRef = useRef();
 
     
     const [error, setError] = useState();
@@ -17,8 +17,9 @@ const AddUser = props => {
         event.preventDefault();
         const enteredUserName= nameInputRef.current.value;
         const enteredUserAge= ageInputRef.current.value;
-        // const enteredUserCollage= ageInputRef.current.value;
-        if (enteredUserName.trim().length === 0 || enteredUserAge.trim().length === 0) {
+        const enteredUserCollage= ageInputRef.current.value;
+
+        if (enteredUserName.trim().length === 0 || enteredUserAge.trim().length === 0 || enteredUserCollage.trim().length === 0) {
             setError({
                 title: "Invalid Input",
                 message: "please enter a valid name and age(non-empty values)."
@@ -32,9 +33,10 @@ const AddUser = props => {
             })
             return;
         }
-        props.onAddUser(enteredUserName, enteredUserAge);
+        props.onAddUser(enteredUserName, enteredUserAge, enteredUserCollage);
         nameInputRef.current.value = '';
         ageInputRef.current.value = '';
+        collageInputRef.current.value = '';
     };
 
    
@@ -65,12 +67,12 @@ const AddUser = props => {
                         type="number"                        
                         ref={ageInputRef}
                     />
-                    {/* <label htmlFor='usercollage'>College name</label>
+                    <label htmlFor='usercollage'>College name</label>
                     <input
                         id="usercollage"
                         type="text"                        
                         ref={collageInputRef}
-                    /> */}
+                    />
                     <Button type='submit'> Add user</Button>
                 </form>
 
